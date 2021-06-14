@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record id="sale_order_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name='date_order' position='after'>
+                <field name='order_id'/>
+          </field>
+      </field>
+    </record>
+
+    <record id="students_tree_view" model="ir.ui.view">
+        <field name="name">Students.tree.view</field>
+        <field name="model">students.profile</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="result"/>
+                <field name="student_in_class"/>
+                <field name="student_address"/>
+                <field name="student_birthdate"/>
+                <field name="student_school_joiningdate"/>
+                <field name="school_type"/>
+                <field name="student_documents"/>
+                <field name="student_image"/>
+                <field name="student_description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="students_form_view" model="ir.ui.view">
+        <field name="name">students.form.view</field>
+        <field name="model">students.profile</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="name" default_focus="1" placeholder="Enter StudentName"/>
+                    </h1>
+                    <hr></hr>
+                    <group>
+                        <group>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="result"/>
+                            <field name="student_in_class"/>
+                            <field name="student_address"/>
+                            <field name="student_birthdate"/>
+                            <field name="student_school_joiningdate"/>
+                            <field name="school_type" widget="radio" options="{'horizontal': true}"/>
+                            <field name="student_documents"/>
+                            <field name="student_image"/>
+                            <field name="student_description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Students note">
+                            <group>
+                                <separator string="Students note"/>
+                                <field name="student_note"/>
+                            </group>
+                        </page>
+                        <page string="Assignment note">
+                            <group>
+                                <separator string="Assignment note"/>
+                                <field name="assignment_note"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>    
+    </record>
+
+
+    <record id="action_students_profile" model="ir.actions.act_window" >
+        <field name="name">Students Profile</field>
+        <field name="res_model">students.profile</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="students_root_menu" name="students"/>
+    <menuitem id="students_sub_menu" parent="students_root_menu" action="action_students_profile"/>
+
+  </data>
+</odoo>

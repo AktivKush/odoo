@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="hobby_list" model="ir.ui.view">
+		<field name="name">hobby.list</field>
+		<field name="model">hobby</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="hobby_name"/>
+			</tree>
+		</field>
+	</record>		
+</odoo>
